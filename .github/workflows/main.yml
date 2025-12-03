@@ -25,4 +25,9 @@ jobs:
     steps:
       - name: "Node current version verification"
         run: node -v
-  
+      - name: "Node Latest LTS version definition"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24.11.1'
+      - name: "Node version verification after update"
+        run: node -v
