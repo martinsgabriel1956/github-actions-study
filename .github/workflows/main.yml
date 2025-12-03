@@ -14,3 +14,15 @@ jobs:
         run: |
           echo "You've created your first workflow!"
           echo "Congratulations"
+      - name: "Python Script"
+        run: |
+          hello_world_message = "Hello World!!"
+          print(hello_world_message)
+        shell: python
+  second-job:
+    name: "Node Enviroment Instalation"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Node current version verification"
+        run: node -v
+  
