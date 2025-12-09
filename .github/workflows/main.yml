@@ -1,34 +1,14 @@
-name: first-pipeline
+name: install
 on:
-  push:
-    branches: ["main"]
   workflow_dispatch:
 jobs:
-  first-job:
-    name: "My first Job"
+  install:
     runs-on: ubuntu-latest
     steps:
-      - name: "My first action"
-        run: echo "Hello World"
-      - name: "Second action"
+      - name: "Install FFMPEG"
         run: |
-          echo "You've created your first workflow!"
-          echo "Congratulations"
-      - name: "Python Script"
+          sudo apt update --yes
+          sudo apt install ffmpeg --yes
+      - name: "Executar FFMPEG"
         run: |
-          hello_world_message = "Hello World!!"
-          print(hello_world_message)
-        shell: python
-  second-job:
-    name: "Node Enviroment Instalation"
-    runs-on: ubuntu-latest
-    needs: [first-job]
-    steps:
-      - name: "Node current version verification"
-        run: node -v
-      - name: "Node Latest LTS version definition"
-        uses: actions/setup-node@v6
-        with:
-          node-version: '24.11.1'
-      - name: "Node version verification after update"
-        run: node -v
+          ffmpeg --help
